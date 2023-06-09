@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  shesharp-hackathon-2023:
+    container_name: shesharp-hackathon-2023
+    build:
+      context: .
+      dockerfile: shesharp-hackathon-2023.dockerfile
+    ports:
+      - '3355:3000'
