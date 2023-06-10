@@ -8,9 +8,9 @@ interface Props {
 const Button = ({iconClass, onClick}: Props) => {
 
   return (
-    <button onClick={onClick} className={styles.button} >
+    <div onClick={onClick} className={styles.button} >
       <i className={iconClass}/>
-    </button>
+    </div>
   )
 }
 
