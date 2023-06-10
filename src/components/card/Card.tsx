@@ -44,6 +44,7 @@ export const Card = ({ card, removeCard, active }: Props) => {
     }
   }
 
+  console.log(card);
   if (card.job_name === null) {
     card.job_name = 'Name less :('
   }
@@ -57,6 +58,7 @@ export const Card = ({ card, removeCard, active }: Props) => {
       console.log('liked')
       setDirection(600);
       setIsLiked(eSwipe.liked)
+      
     }
 
     if (swipe < -300) {
@@ -104,10 +106,60 @@ export const Card = ({ card, removeCard, active }: Props) => {
           }}
           exit="exit"
         >
+          <div className={styles.content}>
           <h2>{card.job_name}</h2>
+          <div className={styles.details}>
+          <span>{`Company: ${card.company_name}`}</span>
+          <span>{`Country: ${card.country}`}</span>
+          </div>
+          
+
+          </div>
+         
         </motion.li>
 
       }
     </>
   )
 }
+
+
+// city
+// : 
+// "Warsaw"
+// company_name
+// : 
+// "Point72"
+// company_url
+// : 
+// "point72.com"
+// country
+// : 
+// "Poland"
+// department
+// : 
+// null
+// hours
+// : 
+// null
+// job_location
+// : 
+// "Warsaw"
+// job_name
+// : 
+// "Software Engineer, Middle Office Systems (Trade Processing)"
+// last_indexed
+// : 
+// "2023-06-09 03:11:43"
+// post_url
+// : 
+// "boards.greenhouse.io/point72/jobs/6751066002"
+// region
+// : 
+// null
+// remote
+// : 
+// null
+// seniority
+// : 
+// null

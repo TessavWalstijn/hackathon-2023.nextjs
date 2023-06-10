@@ -10,6 +10,15 @@
   color: $black;
 }
 
+.content {
+  margin: 2rem 3rem;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
 .title {
   font-size: 3.5vw;
 }

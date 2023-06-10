@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import styles from './page.module.scss'
 import { Card, eSwipe, iCard } from '@/components/card'
 import { getData } from "../api"
@@ -31,6 +31,7 @@ export default function Home() {
           ? window.localStorage.getItem("jobs")
           : null;
 
+          console.log(jobs)
       if (jobs)
         setCards(JSON.parse(jobs).data as iCard[])
     };
