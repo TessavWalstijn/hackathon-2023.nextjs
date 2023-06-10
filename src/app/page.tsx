@@ -44,6 +44,8 @@ export default function Home() {
   }, [cards])
 
   const removeCard = (oldCard: iCard, swiped: eSwipe) => {
+    if (!cards) return;
+
     if (swiped === eSwipe.liked) {
       saved === null ? setSaved([oldCard]) : setSaved([...saved, oldCard]);
     }
