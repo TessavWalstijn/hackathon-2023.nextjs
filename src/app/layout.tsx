@@ -1,6 +1,7 @@
 import './normalize.css'
-import './globals.scss'
+import './globals.module.scss'
 import { Inter } from 'next/font/google'
+import styles from './base.module.scss'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +17,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} ${styles.body}`}>{children}</body>
+      <script src="https://kit.fontawesome.com/59ca3cc0eb.js" async></script>
     </html>
   )
 }
