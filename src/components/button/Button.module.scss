@@ -1,0 +1,31 @@
+@import "./src/app/globals.scss";
+
+.button {
+  width: 4rem;
+  height: 4rem;
+  background-color: $lightcolor;
+  border-radius: 50%;
+  border: 1px solid $darkestcolor;
+  padding: 0.8em;
+  color: $fontcolor;
+  box-shadow: 0px 2px 4px $darkestcolor;
+  transition: all .3s;
+  flex-wrap: wrap;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+
+  &:hover { 
+    background-color: $lightestcolor;
+  }
+  &:active {
+    background-color: $darkercolor;
+    box-shadow: 0px 3px 6px $darkercolor;
+    top: 5px;
+    transform: scale(.95);
+  }
+}
+
+.buttonIcon {
+  padding: 10px;
+}

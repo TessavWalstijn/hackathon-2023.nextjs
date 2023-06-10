@@ -7,7 +7,14 @@
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
+  
 }
+.buttonRow {
+  display: flex; 
+  justify-content: center;
+  column-gap: 10px;
+}
+
 
 .center {
   position: relative;

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import styles from './page.module.scss'
 import { Card, eSwipe, iCard } from '@/components/card'
 import { getData } from "../api"
+import { Button } from '@/components/button'
 
 interface TJobDescriptions {
   job_name: string;
@@ -21,25 +22,25 @@ export default function Home() {
   const [cards, setCards] = useState<iCard[] | null>(null);
   const [saved, setSaved] = useState<iCard[] | null>(null)
   const [activeIndex, setActiveIndex] = useState(0)
-  
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await getData()
       const jobs =
-      typeof window !== "undefined"
-        ? window.localStorage.getItem("jobs")
-        : null;
+        typeof window !== "undefined"
+          ? window.localStorage.getItem("jobs")
+          : null;
 
       if (jobs)
         setCards(JSON.parse(jobs).data as iCard[])
     };
-    
+
     fetchData()
   }, []);
 
   useEffect(() => {
     if (cards?.length)
-    setActiveIndex(cards.length - 1)
+      setActiveIndex(cards.length - 1)
   }, [cards])
 
   const removeCard = (oldCard: iCard, swiped: eSwipe) => {
@@ -55,6 +56,10 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
+      <div>
+        <h1>Swipe your way to your new job!</h1>
+        <h4>Jobhunting made easy: select your level and expertise and swipe your way to the best companies for you. Use the button to select them for later!</h4>
+      </div>
       <ul className={styles.center}>
         {
           cards && cards.map((card, index) => (
@@ -67,6 +72,15 @@ export default function Home() {
           ))
         }
       </ul>
+      <div className={styles.buttonRow}>
+        <Button
+          iconClass="fa-solid fa-xmark fa-3x"
+        />
+        <i className="fa-kit fa-squeeble-circle fa-6x"></i>
+        <Button
+          iconClass="fa-solid fa-check fa-3x"
+        />
+      </div>
     </main>
   );
 }
