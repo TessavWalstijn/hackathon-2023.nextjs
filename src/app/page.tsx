@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import styles from './page.module.scss'
 import { Card, eSwipe, iCard } from '@/components/card'
 import { getData } from "../api"
@@ -31,6 +31,7 @@ export default function Home() {
           ? window.localStorage.getItem("jobs")
           : null;
 
+          console.log(jobs)
       if (jobs)
         setCards(JSON.parse(jobs).data as iCard[])
     };
@@ -60,25 +61,29 @@ export default function Home() {
     <main className={styles.main}>
       <div>
         <h1>Swipe your way to your new job!</h1>
+      </div>
+      <div className={styles.text}>
         <h4>Jobhunting made easy: select your level and expertise and swipe your way to the best companies for you. Use the button to select them for later!</h4>
       </div>
-      <ul className={styles.center}>
-        {
-          cards && cards.map((card, index) => (
-            <Card
-              key={card.job_name}
-              card={card}
-              removeCard={removeCard}
-              active={index === activeIndex}
-            />
-          ))
-        }
-      </ul>
+      <div className={styles.centerPart}>
+        <ul className={styles.center}>
+         {
+           cards && cards.map((card, index) => (
+              <Card
+                key={card.job_name}
+                card={card}
+                removeCard={removeCard}
+                active={index === activeIndex}
+              />
+            ))
+          }
+        </ul>
+      </div>
       <div className={styles.buttonRow}>
         <Button
           iconClass="fa-solid fa-xmark fa-3x"
         />
-        <i className="fa-kit fa-squeeble-circle fa-6x"></i>
+        <i className="fa-kit fa-squeeble-circle fa-5x"></i>
         <Button
           iconClass="fa-solid fa-check fa-3x"
         />
