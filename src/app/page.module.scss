@@ -1,4 +1,4 @@
-@import "./src/app/globals.scss";
+@import '@/app/globals.module.scss';
 
 .main {
   display: flex;
@@ -15,3 +15,25 @@
   column-gap: 10px;
 }
 
+
+.center {
+  position: relative;
+  width: 18rem;
+  list-style-type: none;
+  
+  li {
+    &:nth-child(even) {
+      background-color: $dark;
+      border-color: $medium;
+    }
+  
+    &:nth-child(odd) {
+      background-color: $light;
+      border-color: $medium;
+    }
+  }
+}
+
+.base {
+  height: 30rem;
+}
