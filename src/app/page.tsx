@@ -18,6 +18,9 @@ interface TJobDescriptions {
 }
 
 export default function Home() {
+  const [cards, setCards] = useState<iCard[] | null>(null);
+  const [saved, setSaved] = useState<iCard[] | null>(null)
+  const [activeIndex, setActiveIndex] = useState(0)
   
   useEffect(() => {
     const fetchData = async () => {
@@ -25,15 +28,19 @@ export default function Home() {
       const jobs =
       typeof window !== "undefined"
         ? window.localStorage.getItem("jobs")
-        : false;
+        : null;
+
+      if (jobs)
+        setCards(JSON.parse(jobs).data as iCard[])
     };
     
     fetchData()
   }, []);
 
-  const [cards, setCards] = useState<iCard[]>(data.data as iCard[]);
-  const [saved, setSaved] = useState<iCard[] | null>(null)
-  const [activeIndex, setActiveIndex] = useState(cards.length - 1)
+  useEffect(() => {
+    if (cards?.length)
+    setActiveIndex(cards.length - 1)
+  }, [cards])
 
   const removeCard = (oldCard: iCard, swiped: eSwipe) => {
     if (swiped === eSwipe.liked) {
@@ -50,7 +57,7 @@ export default function Home() {
     <main className={styles.main}>
       <ul className={styles.center}>
         {
-          cards.map((card, index) => (
+          cards && cards.map((card, index) => (
             <Card
               key={card.job_name}
               card={card}
