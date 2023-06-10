@@ -1,9 +1,9 @@
-"use client";
+'use client'
 
-import React, { useEffect } from "react";
-import styles from "./page.module.scss";
-import { Card } from "@/components/card";
-import { getData } from "../api";
+import { useEffect, useState } from 'react'
+import styles from './page.module.scss'
+import { Card, eSwipe, iCard } from '@/components/card'
+import { getData } from "../api"
 
 interface TJobDescriptions {
   job_name: string;
@@ -18,7 +18,7 @@ interface TJobDescriptions {
 }
 
 export default function Home() {
-
+  
   useEffect(() => {
     const fetchData = async () => {
       const data = await getData()
@@ -31,11 +31,35 @@ export default function Home() {
     fetchData()
   }, []);
 
+  const [cards, setCards] = useState<iCard[]>(data.data as iCard[]);
+  const [saved, setSaved] = useState<iCard[] | null>(null)
+  const [activeIndex, setActiveIndex] = useState(cards.length - 1)
+
+  const removeCard = (oldCard: iCard, swiped: eSwipe) => {
+    if (swiped === eSwipe.liked) {
+      saved === null ? setSaved([oldCard]) : setSaved([...saved, oldCard]);
+    }
+
+    const filteredCards = cards.filter(card => card.company_url !== oldCard.company_url)
+
+    setActiveIndex(filteredCards.length - 1)
+    setCards(filteredCards);
+  }
+
   return (
     <main className={styles.main}>
-      <div className={styles.center}>
-        <Card />
-      </div>
+      <ul className={styles.center}>
+        {
+          cards.map((card, index) => (
+            <Card
+              key={card.job_name}
+              card={card}
+              removeCard={removeCard}
+              active={index === activeIndex}
+            />
+          ))
+        }
+      </ul>
     </main>
   );
 }
