@@ -1,5 +1,15 @@
+@import '@/app/globals.module.scss';
+
 .card {
+  position: fixed;
+  top: 6rem;
+  border-radius: 1rem;
   width: 18rem;
   height: 30rem;
-  background-color: red;
+  border: solid 1px;
+  color: $black;
+}
+
+.title {
+  font-size: 3.5vw;
 }
