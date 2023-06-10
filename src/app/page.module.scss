@@ -5,7 +5,6 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem;
   min-height: 100vh;
   
 }
@@ -13,13 +12,16 @@
   display: flex; 
   justify-content: center;
   column-gap: 10px;
+  margin-bottom: 100px;
 }
 
 
 .center {
   position: relative;
   width: 18rem;
+  height: 30rem;
   list-style-type: none;
+  padding: 0;
   
   li {
     &:nth-child(even) {
@@ -36,4 +38,9 @@
 
 .base {
   height: 30rem;
+}
+
+.text {
+  width: 450px;
+  text-align: center;
 }
