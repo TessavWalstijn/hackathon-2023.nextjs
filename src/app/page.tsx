@@ -2,24 +2,12 @@
 
 import { useEffect, useState } from 'react'
 import styles from './page.module.scss'
-import { Card, eSwipe, iCard } from '@/components/card'
 import { getData } from "../api"
-import { Button } from '@/components/button'
-
-interface TJobDescriptions {
-  job_name: string;
-  hours: string;
-  department: string;
-  seniority: string;
-  remote: any;
-  company_name: string;
-  company_url: string;
-  post_url: string;
-  tags_matched: any[];
-}
+import { Card, eSwipe, iCard } from '../components/card'
+import { Button } from '../components/button'
 
 export default function Home() {
-  const [cards, setCards] = useState<iCard[] | null>(null);
+  const [cards, setCards] = useState<iCard[]>([]);
   const [saved, setSaved] = useState<iCard[] | null>(null)
   const [activeIndex, setActiveIndex] = useState(0)
 
@@ -76,10 +64,12 @@ export default function Home() {
       </ul>
       <div className={styles.buttonRow}>
         <Button
+          onClick={() => {removeCard(cards[activeIndex], eSwipe.disliked)}}
           iconClass="fa-solid fa-xmark fa-3x"
         />
         <i className="fa-kit fa-squeeble-circle fa-6x"></i>
         <Button
+          onClick={() => {removeCard(cards[activeIndex], eSwipe.liked)}}
           iconClass="fa-solid fa-check fa-3x"
         />
       </div>

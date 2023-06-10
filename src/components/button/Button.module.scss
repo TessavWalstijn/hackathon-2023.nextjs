@@ -1,14 +1,14 @@
-@import "./src/app/globals.scss";
+@import "./src/app/globals.module.scss";
 
 .button {
   width: 4rem;
   height: 4rem;
-  background-color: $lightcolor;
+  background-color: $light;
   border-radius: 50%;
-  border: 1px solid $darkestcolor;
+  border: 1px solid $dark;
   padding: 0.8em;
-  color: $fontcolor;
-  box-shadow: 0px 2px 4px $darkestcolor;
+  color: $black;
+  box-shadow: 0px 2px 4px $dark;
   transition: all .3s;
   flex-wrap: wrap;
   display: flex;
@@ -16,11 +16,11 @@
   justify-content: center;
 
   &:hover { 
-    background-color: $lightestcolor;
+    background-color: $yellow;
   }
   &:active {
-    background-color: $darkercolor;
-    box-shadow: 0px 3px 6px $darkercolor;
+    background-color: $medium;
+    box-shadow: 0px 3px 6px $medium;
     top: 5px;
     transform: scale(.95);
   }
