@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import './normalize.css'
 import './globals.module.scss'
 import { Inter } from 'next/font/google'
@@ -17,8 +18,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <Script src="https://kit.fontawesome.com/59ca3cc0eb.js"
+          crossOrigin="anonymous"
+          async
+        />
+      </head>
       <body className={`${inter.className} ${styles.body}`}>{children}</body>
-      <script src="https://kit.fontawesome.com/59ca3cc0eb.js" async></script>
     </html>
   );
 }
